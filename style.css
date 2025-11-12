@@ -1,0 +1,445 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: #f5f0eb;
+}
+
+/* Welcome Screen */
+#welcomeScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1s ease;
+    background: linear-gradient(135deg, #e8dcd3 0%, #d4c5b9 100%);
+}
+
+#welcomeScreen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.welcome-box {
+    background: #ffffff;
+    padding: 45px 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    animation: fadeInScale 0.8s ease;
+    max-width: 450px;
+    width: 90%;
+    border: 1px solid #e8dcd3;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.welcome-box h1 {
+    color: #5a4a42;
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+#nameInput {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 1.1em;
+    border: 2px solid #d4c5b9;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #fdfcfb;
+    color: #5a4a42;
+}
+
+#nameInput:focus {
+    border-color: #9a7b6b;
+    box-shadow: 0 0 0 3px rgba(154, 123, 107, 0.1);
+}
+
+#nameInput::placeholder {
+    color: #a89888;
+}
+
+#continueBtn {
+    padding: 14px 45px;
+    font-size: 1.1em;
+    background: #8b6f5c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(139, 111, 92, 0.25);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#continueBtn:hover {
+    background: #7a5f4d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 111, 92, 0.3);
+}
+
+#continueBtn:active {
+    transform: translateY(0);
+}
+
+/* Question Screen */
+#questionScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+    background: linear-gradient(135deg, #f7f3f0 0%, #e8dcd3 100%);
+}
+
+#questionScreen.active {
+    display: flex;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.question-box {
+    background: #ffffff;
+    padding: 45px 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    animation: slideUp 0.8s ease;
+    border: 1px solid #e8dcd3;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.question-box h2 {
+    color: #5a4a42;
+    font-size: 1.9em;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.question-box p {
+    color: #7a6a5d;
+    font-size: 1.1em;
+    margin-bottom: 35px;
+}
+
+.mystery-boxes {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.mystery-box {
+    width: 180px;
+    height: 180px;
+    background: #8b6f5c;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+    position: relative;
+    overflow: hidden;
+}
+
+.mystery-box::before {
+    content: '?';
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.mystery-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.mystery-box:active {
+    transform: translateY(-4px);
+}
+
+.mystery-box:nth-child(1) {
+    background: #9a7b6b;
+}
+
+.mystery-box:nth-child(2) {
+    background: #b89380;
+}
+
+/* Accept Result Screen */
+#acceptScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #e8b4a3 0%, #d4918c 100%);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+#acceptScreen.active {
+    display: flex;
+    animation: fadeInResult 1.5s ease forwards;
+}
+
+/* Reject Result Screen */
+#rejectScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #6b7a8f 0%, #5a6779 100%);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+#rejectScreen.active {
+    display: flex;
+    animation: fadeInResult 1.5s ease forwards;
+}
+
+@keyframes fadeInResult {
+    to {
+        opacity: 1;
+    }
+}
+
+.result-content {
+    text-align: center;
+    color: white;
+    z-index: 10;
+    padding: 40px;
+}
+
+.result-content h1 {
+    font-size: 3.5em;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+    animation: gentlePulse 2.5s ease infinite;
+    font-weight: 600;
+}
+
+.result-content p {
+    font-size: 1.8em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+}
+
+/* Floating Hearts for Accept */
+.heart {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.7);
+    transform: rotate(45deg);
+    animation: floatUp 7s ease-in infinite;
+    opacity: 0;
+}
+
+.heart:before,
+.heart:after {
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -22.5px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: -22.5px;
+}
+
+@keyframes floatUp {
+    0% {
+        bottom: -10%;
+        opacity: 0;
+        transform: rotate(45deg) scale(0.5);
+    }
+    20% {
+        opacity: 0.8;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: rotate(45deg) scale(1.1);
+    }
+}
+
+/* Broken Heart for Reject */
+.broken-heart-container {
+    position: relative;
+    text-align: center;
+}
+
+.broken-heart {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 35px;
+}
+
+.heart-left, .heart-right {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: #8b9aab;
+    transform: rotate(45deg);
+}
+
+.heart-left:before,
+.heart-left:after,
+.heart-right:before,
+.heart-right:after {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: #8b9aab;
+    border-radius: 50%;
+}
+
+.heart-left:before,
+.heart-right:before {
+    top: -45px;
+    left: 0;
+}
+
+.heart-left:after,
+.heart-right:after {
+    top: 0;
+    left: -45px;
+}
+
+.heart-left {
+    left: 0;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    animation: heartBreakLeft 2s ease forwards;
+}
+
+.heart-right {
+    right: 0;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    animation: heartBreakRight 2s ease forwards;
+}
+
+@keyframes heartBreakLeft {
+    100% {
+        transform: rotate(45deg) translateX(-25px);
+        opacity: 0.6;
+    }
+}
+
+@keyframes heartBreakRight {
+    100% {
+        transform: rotate(45deg) translateX(25px);
+        opacity: 0.6;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .welcome-box h1 {
+        font-size: 1.8em;
+    }
+    
+    .question-box h2 {
+        font-size: 1.5em;
+    }
+    
+    .mystery-boxes {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mystery-box {
+        width: 160px;
+        height: 160px;
+    }
+
+    .result-content h1 {
+        font-size: 2.3em;
+    }
+
+    .result-content p {
+        font-size: 1.3em;
+    }
+}

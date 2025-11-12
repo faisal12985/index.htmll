@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question 💕</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen">
+        <div class="welcome-box">
+            <h1>✨ Hey There! ✨</h1>
+            <input type="text" id="nameInput" placeholder="Enter your name" autocomplete="off">
+            <button id="continueBtn">Continue</button>
+        </div>
+    </div>
+
+    <!-- Question Screen -->
+    <div id="questionScreen">
+        <div class="question-box">
+            <h2 id="questionText">Will you be mine? 💕</h2>
+            <p>Choose one mystery box...</p>
+            <div class="mystery-boxes" id="boxesContainer">
+                <!-- Boxes will be dynamically created -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Accept Result Screen -->
+    <div id="acceptScreen">
+        <div class="result-content">
+            <h1>🎉 Congratulations! 🎉</h1>
+            <p id="acceptText">You accepted proposal! 💖✨</p>
+        </div>
+    </div>
+
+    <!-- Reject Result Screen -->
+    <div id="rejectScreen">
+        <div class="broken-heart-container">
+            <div class="broken-heart">
+                <div class="heart-left"></div>
+                <div class="heart-right"></div>
+            </div>
+            <div class="result-content">
+                <p id="rejectText">Your bad luck bro... She rejected you 💔</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="happyMusic" loop>
+        <source src="perfrct.mp4" type="audio/mpeg">
+    </audio>
+    <audio id="sadMusic" loop>
+        <source src="aadat.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
